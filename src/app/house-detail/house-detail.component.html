@@ -1,0 +1,57 @@
+<div class="container">
+    <h2>{{ house.name }}</h2>
+    <p><strong>Region:</strong> {{ house.region }}</p>
+    <p><strong>Coat of Arms:</strong> {{ house.coatOfArms }}</p>
+    <p><strong>Words:</strong> {{ house.words }}</p>
+    <p><strong>Titles:</strong></p>
+    <ul>
+      <li *ngFor="let title of house.titles">{{ title }}</li>
+    </ul>
+    <p><strong>Seats:</strong></p>
+    <ul>
+      <li *ngFor="let seat of house.seats">{{ seat }}</li>
+    </ul>
+    <p><strong>Current Lord:</strong></p>
+    <p>
+      <a *ngIf="house.currentLord" [routerLink]="['/characters', extractIdFromUrl(house.currentLord)]">
+        {{ currentLordName }}
+      </a>
+    </p>
+    <p><strong>Heir:</strong></p>
+    <p>
+      <a *ngIf="house.heir" [routerLink]="['/characters', extractIdFromUrl(house.heir)]">
+        {{ heirName }}
+      </a>
+    </p>
+    <p><strong>Overlord:</strong></p>
+    <p>
+      <a *ngIf="house.overlord" [routerLink]="['/houses', extractIdFromUrl(house.overlord)]">
+        {{ overlordName }}
+      </a>
+    </p>
+    <p><strong>Founded:</strong> {{ house.founded }}</p>
+    <p><strong>Founder:</strong></p>
+    <p>
+      <a *ngIf="house.founder" [routerLink]="['/characters', extractIdFromUrl(house.founder)]">
+        {{ founderName }}
+      </a>
+    </p>
+    <p><strong>Died Out:</strong> {{ house.diedOut }}</p>
+    <p><strong>Ancestral Weapons:</strong></p>
+    <ul>
+      <li *ngFor="let weapon of house.ancestralWeapons">{{ weapon }}</li>
+    </ul>
+    <p><strong>Cadet Branches:</strong></p>
+    <ul>
+      <li *ngFor="let branch of house.cadetBranches">
+        <a [routerLink]="['/houses', extractIdFromUrl(branch)]">{{ branch }}</a>
+      </li>
+    </ul>
+    <p><strong>Sworn Members:</strong></p>
+    <ul>
+      <li *ngFor="let member of swornMembers">
+        <a [routerLink]="['/characters', member.url]">{{ member.name }}</a>
+      </li>
+    </ul>
+  </div>
+  

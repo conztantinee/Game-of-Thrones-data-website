@@ -1,0 +1,17 @@
+<h2>Books</h2>
+
+<input type="text" [(ngModel)]="searchTerm" placeholder="Search by name" (input)="filterBooks()" />
+
+<hr>
+
+<div *ngFor="let book of books">
+  <h3>
+    <a [routerLink]="['/books', book.url.split('/').pop()]">{{ book.name }}</a>
+  </h3>      
+  <p>Author: {{ book.authors.join(', ') }}</p>
+  <p>Number of Pages: {{ book.numberOfPages }}</p>
+  <hr>
+</div>
+
+<button (click)="getPreviousPage()" [disabled]="currentPage <= 1">Previous Page</button>
+<button (click)="getNextPage()" [disabled]="currentPage >= totalPages">Next Page</button>

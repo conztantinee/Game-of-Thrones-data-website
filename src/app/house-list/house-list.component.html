@@ -1,0 +1,21 @@
+<h2>Houses</h2>
+
+<div>
+  <input type="text" placeholder="Search by name" [(ngModel)]="searchName">
+  <input type="text" placeholder="Search by region" [(ngModel)]="searchRegion">
+  <button (click)="search()">Search</button>
+</div>
+
+<hr>
+
+<div *ngFor="let house of houses">
+  <h3>
+    <a [routerLink]="['/houses', house.url.split('/').pop()]">{{ house.name }}</a>
+  </h3>
+  <p>Region: {{ house.region }}</p>
+  <p>Words: {{ house.words }}</p>
+  <hr>
+</div>
+
+<button (click)="getPreviousPage()" [disabled]="currentPage <= 1">Previous Page</button>
+<button (click)="getNextPage()" [disabled]="currentPage >= totalPages">Next Page</button>

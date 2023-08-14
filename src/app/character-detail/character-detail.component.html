@@ -1,0 +1,61 @@
+<div class="container">
+    <h2>{{ character.name }}</h2>
+    <p><strong>Gender:</strong> {{ character.gender }}</p>
+    <p><strong>Culture:</strong> {{ character.culture }}</p>
+    <p><strong>Born:</strong> {{ character.born }}</p>
+    <p><strong>Died:</strong> {{ character.died }}</p>
+    
+    <h3>Titles:</h3>
+    <ul>
+      <li *ngFor="let title of character.titles">{{ title }}</li>
+    </ul>
+    
+    <h3>Aliases:</h3>
+    <ul>
+      <li *ngFor="let alias of character.aliases">{{ alias }}</li>
+    </ul>
+    
+    <h3>Father:</h3>
+    <p>
+      <a *ngIf="character.father && character.father !== ''" [routerLink]="['/characters', extractIdFromUrl(character.father)]">
+        {{ fatherName }}
+      </a>
+    </p>
+    
+    <h3>Mother:</h3>
+    <p>
+      <a *ngIf="character.mother && character.mother !== ''" [routerLink]="['/characters', extractIdFromUrl(character.mother)]">
+        {{ motherName }}
+      </a>
+    </p>
+    
+    <h3>Spouse(s):</h3>
+    <p *ngIf="spouseNames && spouseNames.length > 0">
+      <a *ngFor="let spouse of spouseNames" [routerLink]="['/characters', spouse.id]">{{ spouse.name }}</a>
+    </p>
+    
+    <h3>Allegiances:</h3>
+    <ul>
+      <li *ngFor="let allegiance of character.allegiances">
+        <a [routerLink]="['/houses', extractIdFromUrl(allegiance)]">{{ allegiance }}</a>
+      </li>
+    </ul>
+    
+    <h3>Books:</h3>
+    <ul>
+      <li *ngFor="let book of character.books">
+        <a [routerLink]="['/books', extractIdFromUrl(book)]">{{ book }}</a>
+      </li>
+    </ul>
+    
+    <h3>TV Series:</h3>
+    <ul>
+      <li *ngFor="let series of character.tvSeries">{{ series }}</li>
+    </ul>
+    
+    <h3>Played By:</h3>
+    <ul>
+      <li *ngFor="let actor of character.playedBy">{{ actor }}</li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,11 @@
+<div *ngIf="book" class="book-details">
+    <h2>{{ book.name }}</h2>
+    <p>ISBN: {{ book.isbn }}</p>
+    <p>Authors: {{ book.authors.join(', ') }}</p>
+    <p>Number of Pages: {{ book.numberOfPages }}</p>
+    <p>Publisher: {{ book.publisher }}</p>
+    <p>Country: {{ book.country }}</p>
+    <p>Media Type: {{ book.mediaType }}</p>
+    <p>Released: {{ book.released }}</p>
+  </div>
+  
